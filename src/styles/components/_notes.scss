@@ -1,0 +1,32 @@
+.note {
+    background-color: $white;
+    display: inline-block;
+    margin-top: 3px;
+    padding: 3px 6px;
+
+    &.root,
+    &.root.scale-part {
+        background-color: $root;
+        color: colorOnBackground($root);
+    }
+
+    &.scale-part {
+        background-color: $black;
+        color: colorOnBackground($black);
+    }
+}
+
+.lowlight {
+    background-color: $white;
+    color: colorOnBackground($white);
+}
+
+.highlight {
+    background-color: $black;
+    color: colorOnBackground($black);
+}
+
+.root {
+    background-color: $root;
+    color: colorOnBackground($root);
+}

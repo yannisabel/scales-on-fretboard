@@ -1,0 +1,13 @@
+//________________  FUNCTIONS  ________________//
+
+// Choose the best contrast color considering the background //
+@function colorOnBackground($color) {
+
+    @if (lightness( $color ) > 50) {
+        @return $black;
+    }
+    
+    @else {
+        @return $white;
+    }
+}

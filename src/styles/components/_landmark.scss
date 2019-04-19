@@ -1,0 +1,9 @@
+.landmark {
+    position: relative;
+    width: 100%;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(25, 70px);
+    color: colorOnBackground($white);
+    z-index: 1;
+}
