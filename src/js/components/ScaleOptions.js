@@ -83,10 +83,10 @@ export default class ScaleOptions extends React.Component {
         return <div className={ Styles.options }>
             <form onSubmit={ this.handleSubmit.bind(this) }>
                 <label>
-                Instruments:<select value={ this.state.tuning } onChange={ this.handleInstrumentChange.bind(this) }>{ this.getInstrumentList() }</select>
+                Instrument:<select value={ this.state.tuning } onChange={ this.handleInstrumentChange.bind(this) }>{ this.getInstrumentList() }</select>
                 </label>
                 <label>
-                Root:<select value={ this.state.root } onChange={ this.handleRootChange.bind(this) }>{ this.getRootList() }</select>
+                Root Note:<select value={ this.state.root } onChange={ this.handleRootChange.bind(this) }>{ this.getRootList() }</select>
                 </label>
                 <label>
                 Scale:<select value={ this.state.scale } onChange={ this.handleScaleChange.bind(this) }>{ this.getScaleList() }</select>

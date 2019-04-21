@@ -27,10 +27,34 @@ export default class ScaleNotes extends React.Component {
         }
         return scaleNotes;
     }
+    getInterval() {
+        const highlight = this.props.highlight;
+        let interval = [];
+        let difference;
+        for (let i = 1; i < highlight.length; i++) {
+            difference = highlight[i] - highlight[i - 1];
+            if (difference == 1) {
+                difference = '1/2';
+            }
+            else if (difference == 2) {
+                difference = '1';
+            }
+            else if (difference == 3) {
+                difference = '1,5';
+            }
+            interval.push(
+                difference
+            );
+        }
+        return interval
+    }
     render() {
         return <div className={ Styles['scale-notes'] }>
-            <strong>Scale Notes</strong><br/>
-            { this.getScaleNotes().join(', ') }
+            <strong>Scale Notes:</strong><br/>
+            <p>{ this.getScaleNotes().join(', ') }</p>
+            <strong>Intervals:</strong><br/>
+            <p>{ this.getInterval().join(' - ') }</p>
+            <span className={ Styles['intervals-legend'] }>1/2 = Semitone, 1 = Tone, 1,5 = 1 tone and a half</span>
         </div>;
     }
 }
