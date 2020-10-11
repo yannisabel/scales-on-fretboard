@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.fretboard">
+    <p>You chose {{$store.getters.getInstrument }}</p>
     <String
       v-for="(string, index) in strings"
       :key="string"
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-import { instruments, tunings, notesNames } from '../data/music'
+import { mapGetters} from 'vuex';
 
 import String from './String'
 
@@ -25,32 +26,46 @@ export default {
   props: {
   },
   computed: {
+    ...mapGetters({
+      getInstruments: 'getInstruments',
+      getInstrument: 'getInstrument',
+      getTunings: 'getTunings',
+      getTuning: 'getTuning',
+      getNotesNames: 'getNotesNames',
+    }),
     tuningNotes() {
-      const notes = Array.from( tunings['guitar']['standard']);
+      const notes = Array.from(this.getTunings[this.getInstrument][this.getTuning]);
+      console.log('notes', notes, this.getTunings[this.getInstrument][this.getTuning])
       return notes;
     },
     nbStrings() {
-      return instruments['guitar'].nbStrings;
+      console.log('nbStrings', this.getInstruments[this.getInstrument].nbStrings)
+      return this.getInstruments[this.getInstrument].nbStrings;
     },
     strings() {
       return [...Array(this.nbStrings).keys()]
     },
     notesByString() {
       let allStrings = []
-      let arrayNotes = Object.values(notesNames)
+      let arrayNotes = Object.values(this.getNotesNames)
 
       this.tuningNotes.forEach(stringNote => {
         let currentString = [];
         const noteIndex = arrayNotes.findIndex(item => item === stringNote);
         const length = arrayNotes.length;
 
-        for (let i = 0; i < length*2+ 1; i++) {
+        for (let i = 0; i < length * 2 + 1; i++) {
           currentString.push(arrayNotes[(noteIndex + i) % length]);
         }
         allStrings.push(currentString);
       })
 
       return allStrings.reverse()
+    },
+  },
+  watch: {
+    selected (newInstrument, oldInstrument) {
+      console.log('selected change', newInstrument, oldInstrument)
     },
   },
   methods: {
