@@ -1,6 +1,5 @@
 <template>
   <div :class="$style.fretboard">
-    <p>You chose {{$store.getters.getInstrument }}</p>
     <String
       v-for="(string, index) in strings"
       :key="string"
@@ -14,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 
 import String from './String'
 
@@ -27,45 +26,43 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getInstruments: 'getInstruments',
+      getAllInstruments: 'getAllInstruments',
       getInstrument: 'getInstrument',
-      getTunings: 'getTunings',
+      getAllTunings: 'getAllTunings',
       getTuning: 'getTuning',
       getNotesNames: 'getNotesNames',
     }),
     tuningNotes() {
-      const notes = Array.from(this.getTunings[this.getInstrument][this.getTuning]);
-      console.log('notes', notes, this.getTunings[this.getInstrument][this.getTuning])
+      const notes = this.getAllTunings[this.getInstrument][this.getTuning];
+      console.log('notes', notes)
       return notes;
     },
     nbStrings() {
-      console.log('nbStrings', this.getInstruments[this.getInstrument].nbStrings)
-      return this.getInstruments[this.getInstrument].nbStrings;
+      console.log('nbStrings', this.getAllInstruments[this.getInstrument].nbStrings)
+      return this.getAllInstruments[this.getInstrument].nbStrings;
     },
     strings() {
       return [...Array(this.nbStrings).keys()]
     },
     notesByString() {
       let allStrings = []
-      let arrayNotes = Object.values(this.getNotesNames)
+      let arrayNotes = Object.keys(this.getNotesNames)
 
       this.tuningNotes.forEach(stringNote => {
+        console.log(stringNote)
         let currentString = [];
-        const noteIndex = arrayNotes.findIndex(item => item === stringNote);
+        let noteIndex = arrayNotes.findIndex(item => item === stringNote);
         const length = arrayNotes.length;
 
         for (let i = 0; i < length * 2 + 1; i++) {
-          currentString.push(arrayNotes[(noteIndex + i) % length]);
+          const noteName = arrayNotes[(noteIndex + i) % length];
+          currentString.push(this.getNotesNames[noteName]);
         }
         allStrings.push(currentString);
       })
 
+      console.log(allStrings.reverse())
       return allStrings.reverse()
-    },
-  },
-  watch: {
-    selected (newInstrument, oldInstrument) {
-      console.log('selected change', newInstrument, oldInstrument)
     },
   },
   methods: {

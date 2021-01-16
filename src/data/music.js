@@ -224,12 +224,12 @@ export const models = {
  * Instruments
  */
 export const instruments = {
-'guitar':    { name: 'Guitar',            nbStrings:  6 },
-'bass':      { name: 'Bass',              nbStrings:  4 },
-'bass-5':    { name: '5-string bass',     nbStrings:  5 },
-'bass-6':    { name: '6-string bass',     nbStrings:  6 },
-'ukulele':   { name: 'Ukulele',           nbStrings:  4 },
-'guitar-7':  { name: '7-string guitar',   nbStrings:  7 },
+'guitar':    { label: 'guitar',   name: 'Guitar',           nbStrings:  6 },
+'bass':      { label: 'bass',     name: 'Bass',             nbStrings:  4 },
+'bass-5':    { label: 'bass-5',   name: '5-string bass',    nbStrings:  5 },
+'bass-6':    { label: 'bass-6',   name: '6-string bass',    nbStrings:  6 },
+'ukulele':   { label: 'ukulele',  name: 'Ukulele',          nbStrings:  4 },
+'guitar-7':  { label: 'guitar-7', name: '7-string guitar',  nbStrings:  7 },
 };
 
 /**
@@ -294,8 +294,7 @@ export const tunings = {
   'all-fifths':     ['C',  'G',  'D',  'A' ],
 },
 'bass-5': {
-  'standard':       ['E',  'A',  'D',  'G',  'C' ],
-  'std-low':        ['B',  'E',  'A',  'D',  'G' ],
+  'standard':       ['B', 'E',  'A',  'D',  'G' ],
 },
 'bass-6': {
   'standard':       ['B',  'E',  'A',  'D',  'G',  'C' ],
@@ -306,57 +305,4 @@ export const tunings = {
   'baritone':       ['D',  'G',  'B',  'E' ],
   'dorota':         ['E',  'B',  'E',  'A' ],
 },
-};
-
-export const tuningsNames = {
-'standard':       'Standard tuning',
-
-// Guitar
-'hstep-down':     'Half-step down',
-'lower-d':        'Lower D',
-'drop-d':         'Drop D',
-'drop-c':         'Drop C',
-'ddrop-d':        'Double drop D',
-'ddrop-c':        'Double drop C',
-'higher-f':       'Higher F',
-'higher-fs':      'Higher F♯',
-'min-thirds':     'Minor thirds',
-'maj-thirds':     'Major thirds',
-'all-fourths':    'All-fourths',
-'aug-fourths':    'Augmented fourths',
-'all-fifths':     'All-fifths',
-'nst':            'New standard tuning',
-'open-a':         'Open A',
-'open-b':         'Open B',
-'open-c':         'Open C',
-'open-csus2':     'Open Csus2',
-'open-d':         'Open D',
-'open-dm911':     'Open Dm9/11',
-'open-d6':        'Open D6',
-'open-d6sus2':    'Open D6sus2',
-'open-d7':        'Open D7',
-'open-d7sus2':    'Open D7sus2',
-'open-dm':        'Open Dm',
-'open-dm6':       'Open Dm6',
-'open-dm7':       'Open Dm7',
-'open-dsus4':     'Open Dsus4',
-'open-e':         'Open E',
-'open-g':         'Open G',
-'open-f':         'Open F',
-
-// 7-string guitar
-'drop-a':         'Drop A',
-'lower-bf':       'Lower B♭',
-'lower-a':        'Lower A',
-'higher-c':       'Higher C',
-'higher-cs':      'Higher C♯',
-
-// Bass
-'lower-d-drop-c': 'Lower D + Drop C',
-'std-low':        'Standard Low',
-
-// Ukulele
-'d-tuning':       'D tuning',
-'baritone':       'Baritone',
-'dorota':         'Dorota',
 };

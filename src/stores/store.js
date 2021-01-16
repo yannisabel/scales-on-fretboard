@@ -6,41 +6,41 @@ import { instruments, tunings, notesNames } from '../data/music'
 Vue.use(Vuex);
 
 const state = {
-  instruments: instruments,
-  tunings: tunings,
+  allInstruments: instruments,
+  allTunings: tunings,
   notesNames: notesNames,
   instrument: 'guitar',
   tuning: 'standard',
 };
 
 const mutations = {
-mutateInstrument(state, value = 'guitar') {
-  state.instrument = value;
+  mutateInstrument(state, payload) {
+    state.instrument = payload;
 
-  console.log('mutation Instrument', state, value)
-},
-mutateTuning(state, value = 'standard') {
-  state.tuning = value;
+    console.log('mutation Instrument', state, payload)
+  },
+  mutateTuning(state, payload) {
+    state.tuning = payload;
 
-  console.log('mutation tuning', state, value)
-}
+    console.log('mutation tuning', state, payload)
+  }
 };
 
 const actions = {
-  updateInstrument(context, payload) {
-    context.commit('mutateInstrument', payload);
-    console.log('actions Instrument', context, payload)
+  updateInstrument({commit}, payload) {
+    commit('mutateInstrument', payload);
+    console.log('actions Instrument', {commit}, payload)
   },
-  updateTuning(context, payload) {
-    context.commit('mutateTuning', payload);
-    console.log('actions Tuning', context, payload)
+  updateTuning({commit}, payload) {
+    commit('mutateTuning', payload);
+    console.log('actions Tuning', {commit}, payload)
   }
 };
 
 const getters = {
-  getInstruments: state => state.instruments,
+  getAllInstruments: state => state.allInstruments,
   getInstrument: state => state.instrument,
-  getTunings: state => state.tunings,
+  getAllTunings: state => state.allTunings,
   getTuning: state => state.tuning,
   getNotesNames: state => state.notesNames,
 };
