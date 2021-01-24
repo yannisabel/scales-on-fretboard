@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { instruments, tunings, notesNames } from '../data/music'
+import { instruments, tunings, notesNames, scales, intervalsNames } from '../data/music'
 
 Vue.use(Vuex);
 
@@ -11,30 +11,25 @@ const state = {
   notesNames: notesNames,
   instrument: 'guitar',
   tuning: 'standard',
+  allScales: scales,
+  scale: 'major',
+  intervalsNames: intervalsNames,
+  rootNote: 'C',
 };
 
 const mutations = {
   mutateInstrument(state, payload) {
     state.instrument = payload;
-
-    console.log('mutation Instrument', state, payload)
   },
   mutateTuning(state, payload) {
     state.tuning = payload;
-
-    console.log('mutation tuning', state, payload)
-  }
-};
-
-const actions = {
-  updateInstrument({commit}, payload) {
-    commit('mutateInstrument', payload);
-    console.log('actions Instrument', {commit}, payload)
   },
-  updateTuning({commit}, payload) {
-    commit('mutateTuning', payload);
-    console.log('actions Tuning', {commit}, payload)
-  }
+  mutateScale(state, payload) {
+    state.scale = payload;
+  },
+  mutateRootNote(state, payload) {
+    state.rootNote = payload;
+  },
 };
 
 const getters = {
@@ -43,6 +38,25 @@ const getters = {
   getAllTunings: state => state.allTunings,
   getTuning: state => state.tuning,
   getNotesNames: state => state.notesNames,
+  getAllScales: state => state.allScales,
+  getScale: state => state.scale,
+  getIntervalsNames: state => state.intervalsNames,
+  getRootNote: state => state.rootNote,
+};
+
+const actions = {
+  updateInstrument({commit}, payload) {
+    commit('mutateInstrument', payload);
+  },
+  updateTuning({commit}, payload) {
+    commit('mutateTuning', payload);
+  },
+  updateScale({commit}, payload) {
+    commit('mutateScale', payload);
+  },
+  updateRootNote({commit}, payload) {
+    commit('mutateRootNote', payload);
+  },
 };
 
 export default new Vuex.Store({

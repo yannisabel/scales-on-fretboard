@@ -34,11 +34,9 @@ export default {
     }),
     tuningNotes() {
       const notes = this.getAllTunings[this.getInstrument][this.getTuning];
-      console.log('notes', notes)
       return notes;
     },
     nbStrings() {
-      console.log('nbStrings', this.getAllInstruments[this.getInstrument].nbStrings)
       return this.getAllInstruments[this.getInstrument].nbStrings;
     },
     strings() {
@@ -49,26 +47,24 @@ export default {
       let arrayNotes = Object.keys(this.getNotesNames)
 
       this.tuningNotes.forEach(stringNote => {
-        console.log(stringNote)
-        let currentString = [];
-        let noteIndex = arrayNotes.findIndex(item => item === stringNote);
-        const length = arrayNotes.length;
+        let currentString = []
+        let noteIndex = arrayNotes.findIndex(item => item === stringNote)
+        const length = arrayNotes.length
 
         for (let i = 0; i < length * 2 + 1; i++) {
-          const noteName = arrayNotes[(noteIndex + i) % length];
-          currentString.push(this.getNotesNames[noteName]);
+          const noteName = arrayNotes[(noteIndex + i) % length]
+          
+          currentString.push(this.getNotesNames[noteName])
         }
-        allStrings.push(currentString);
+        allStrings.push(currentString)
       })
 
-      console.log(allStrings.reverse())
       return allStrings.reverse()
     },
   },
   methods: {
     stringNotes(index) {
-      const allStrings = this.notesByString
-      const notes = allStrings[index]
+      const notes = this.notesByString[index]
 
       return notes
     },
