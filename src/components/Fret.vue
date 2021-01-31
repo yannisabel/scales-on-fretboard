@@ -1,6 +1,11 @@
 <template>
   <div :class="$style.fret">
-    <div :class="[$style.fret__note]">
+    <div
+      :class="[$style.fret__note]"
+      role="tooltip"
+      v-tooltip="{
+        content: interval,
+      }">
       <svg
         viewBox="0 0 140 140"
         preserveAspectRatio="xMinYMin meet"
@@ -31,6 +36,12 @@ export default {
   props: {
     note: String,
     highlighted: Boolean,
+    interval: String,
+  },
+  methods: {
+    displayTooltip() {
+      return this.interval ? true : false
+    }
   },
 }
 </script>
@@ -43,7 +54,7 @@ export default {
     position: relative;
     width: 100px;
     height: 100%;
-    border-right: 4px solid black;
+    border-right: 4px solid var(--fret-color);
 
     &__note {
       align-items: center;
@@ -59,22 +70,17 @@ export default {
       }
 
       circle {
-        fill: #264B68;
+        fill: var(--note-bg-color);
       }
 
       .circle-back--highlighted {
-        fill: #ff5e00;
+        fill: var(--scale-note-bg-color);
       }
 
       text { 
-        fill: #fff;
+        fill: var(--note-text-color);
         font-size: 4em;
       }
-    }
-
-    .interval {
-      position: absolute;
-      background-color: #F1F1F1;
     }
   }
 </style>

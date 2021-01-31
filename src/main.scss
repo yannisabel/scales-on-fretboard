@@ -1,0 +1,16 @@
+@import './styles/colors';
+@import './styles/tooltip';
+@import './styles/switch';
+
+body {
+  background-color: var(--app-background-color);
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+#app {
+  text-align: center;
+  margin-top: 60px;
+}

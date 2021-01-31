@@ -5,6 +5,7 @@
       :key="`${ note.name }-${ index }`"
       :class="index === 0 ? $style['fret--is-open-string'] : null"
       :note="note.name"
+      :interval="note.interval !== null ? note.interval.name : null"
       :highlighted="note.interval !== null"
     />
   </div>
@@ -35,9 +36,13 @@ export default {
       const scaleName = this.getScale
       const allScales = this.getAllScales
       const notes = this.notes
+      const intervalsNames = this.getIntervalsNames
       notes.pop()
 
+      let scaleNotes = []
+
       const scalePosition = allScales[scaleName].positions
+      console.log(scalePosition)
 
       // reorder notes starting with root note
       let copyNotes = [...notes];
@@ -45,15 +50,24 @@ export default {
 
       // filter notes by scale
       const scale = reorderedNotes.filter((note, index) => scalePosition.includes(index));
+      console.log(scale)
 
-      return scale
+      for (let i = 0; i < scale.length; i++) {
+        scaleNotes.push({note: scale[i], name: intervalsNames[scalePosition[i]]})
+      }
+
+      console.log(scaleNotes)
+
+      return scaleNotes
     },
     allNotesWithInfos() {
       let allNotesWithInfos = []
 
       for (let i = 0; i < this.notes.length; i++) {
         let note = this.notes[i]
-        let [currentInterval] = this.scaleNotes.filter(interval => interval === note)
+        // console.log(note)
+        let [currentInterval] = this.scaleNotes.filter(interval => interval.note === note)
+        // console.log(currentInterval)
 
         let interval = currentInterval ? currentInterval : null
 
@@ -80,12 +94,12 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       content: '';
-      background: #000;
+      background: var(--string-color);
       z-index: -1;
     }
   }
   .fret--is-open-string {
     width: 50px;
-    border-right: 6px solid black;
+    border-right: 6px solid var(--fret-color);
   }
 </style>

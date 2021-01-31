@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <label for="toggle-switch'" :class="{'active': darkMode}" class="toggle__button">
+      <span v-if="darkMode" class="toggle__label">Dark</span>
+      <span v-if="!darkMode" class="toggle__label">Light</span>
+
+      <input type="checkbox" id="toggle-switch'" v-model="darkMode">
+      <span class="toggle__switch"></span>
+    </label>
     <div>
       <label for="instrument-choice">Instrument:</label>
       <select
@@ -83,6 +90,33 @@ export default {
       selectedTuning: this.$store.state.tuning,
       selectedScale: this.$store.state.scale,
       selectedRootNote: this.$store.state.rootNote,
+      darkMode: true,
+    }
+  },
+  mounted() {
+    // check for active theme
+    let htmlElement = document.documentElement;
+    let theme = localStorage.getItem("theme");
+
+    if (theme === 'light') {
+        htmlElement.setAttribute('theme', 'light')
+        this.darkMode = false
+    } else {
+        htmlElement.setAttribute('theme', 'dark');
+        this.darkMode = true
+    }
+  },
+  watch: {
+    darkMode: function () {
+        let htmlElement = document.documentElement;
+
+        if (this.darkMode) {
+            localStorage.setItem("theme", 'dark');
+            htmlElement.setAttribute('theme', 'dark');
+        } else {
+            localStorage.setItem("theme", 'light');
+            htmlElement.setAttribute('theme', 'light');
+        }
     }
   },
   computed: {
@@ -103,6 +137,9 @@ export default {
     },
   },
   methods: {
+    eventHandler(value) {
+        this.darkMode = value
+    },
     changeInstrument() {
       this.$store.dispatch('updateInstrument', this.selectedInstrument)
       // force tuning to be standard on instrument change
@@ -126,12 +163,5 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './main.scss';
 </style>

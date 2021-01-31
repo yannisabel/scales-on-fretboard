@@ -79,10 +79,10 @@ export default {
   }
 
   .string--is-first {
-    border-top: 1px solid black;
+    border-top: 1px solid var(--string-color);
   }
 
   .string--is-last {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--string-color);
   }
 </style>
