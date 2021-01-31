@@ -137,9 +137,6 @@ export default {
     },
   },
   methods: {
-    eventHandler(value) {
-        this.darkMode = value
-    },
     changeInstrument() {
       this.$store.dispatch('updateInstrument', this.selectedInstrument)
       // force tuning to be standard on instrument change

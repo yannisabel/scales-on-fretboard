@@ -63,13 +63,17 @@ export default {
     allNotesWithInfos() {
       let allNotesWithInfos = []
 
+      console.log(this.notes)
+
       for (let i = 0; i < this.notes.length; i++) {
         let note = this.notes[i]
-        // console.log(note)
+        console.log(this.scaleNotes)
+        console.log(note)
         let [currentInterval] = this.scaleNotes.filter(interval => interval.note === note)
         // console.log(currentInterval)
 
         let interval = currentInterval ? currentInterval : null
+        console.log(interval)
 
         allNotesWithInfos.push({name: note, interval})
       }
