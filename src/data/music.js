@@ -1,21 +1,34 @@
 /**
  * Notes
  */
-export const notesNames = {
-'A':  'A',
-'A#': 'A♯',
-'B':  'B',
-'C':  'C',
-'C#': 'C♯',
-'D':  'D',
-'D#': 'D♯',
-'E':  'E',
-'F':  'F',
-'F#': 'F♯',
-'G':  'G',
-'G#': 'G♯',
-};
-export const notes = notesNames;
+export const notesNames = [
+  'A',
+  'A#',
+  'B',
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#'
+]
+// export const notesNames = {
+// 'A':  'A',
+// 'A#': 'A#',
+// 'B':  'B',
+// 'C':  'C',
+// 'C#': 'C#',
+// 'D':  'D',
+// 'D#': 'D#',
+// 'E':  'E',
+// 'F':  'F',
+// 'F#': 'F#',
+// 'G':  'G',
+// 'G#': 'G#',
+// };
 
 /**
  * Intervals

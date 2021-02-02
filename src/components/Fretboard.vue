@@ -44,18 +44,13 @@ export default {
     },
     notesByString() {
       let allStrings = []
-      let arrayNotes = Object.keys(this.getNotesNames)
+      let arrayNotes = this.getNotesNames
 
       this.tuningNotes.forEach(stringNote => {
-        let currentString = []
         let noteIndex = arrayNotes.findIndex(item => item === stringNote)
-        const length = arrayNotes.length
 
-        for (let i = 0; i < length * 2 + 1; i++) {
-          const noteName = arrayNotes[(noteIndex + i) % length]
-          
-          currentString.push(this.getNotesNames[noteName])
-        }
+        const reorderdedNotes = arrayNotes.slice(noteIndex).concat(arrayNotes.slice(0, noteIndex))
+        const currentString = reorderdedNotes.concat(reorderdedNotes, reorderdedNotes[0])
         allStrings.push(currentString)
       })
 
@@ -65,7 +60,6 @@ export default {
   methods: {
     stringNotes(index) {
       const notes = this.notesByString[index]
-
       return notes
     },
   }

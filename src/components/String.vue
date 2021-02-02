@@ -25,7 +25,6 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getNotesNames: 'getNotesNames',
       getRootNote: 'getRootNote',
       getAllScales: 'getAllScales',
       getScale: 'getScale',
@@ -37,12 +36,10 @@ export default {
       const allScales = this.getAllScales
       const notes = this.notes
       const intervalsNames = this.getIntervalsNames
-      notes.pop()
 
       let scaleNotes = []
 
       const scalePosition = allScales[scaleName].positions
-      console.log(scalePosition)
 
       // reorder notes starting with root note
       let copyNotes = [...notes];
@@ -50,30 +47,21 @@ export default {
 
       // filter notes by scale
       const scale = reorderedNotes.filter((note, index) => scalePosition.includes(index));
-      console.log(scale)
 
       for (let i = 0; i < scale.length; i++) {
         scaleNotes.push({note: scale[i], name: intervalsNames[scalePosition[i]]})
       }
-
-      console.log(scaleNotes)
 
       return scaleNotes
     },
     allNotesWithInfos() {
       let allNotesWithInfos = []
 
-      console.log(this.notes)
-
       for (let i = 0; i < this.notes.length; i++) {
         let note = this.notes[i]
-        console.log(this.scaleNotes)
-        console.log(note)
         let [currentInterval] = this.scaleNotes.filter(interval => interval.note === note)
-        // console.log(currentInterval)
 
         let interval = currentInterval ? currentInterval : null
-        console.log(interval)
 
         allNotesWithInfos.push({name: note, interval})
       }
