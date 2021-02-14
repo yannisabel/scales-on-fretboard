@@ -1,0 +1,53 @@
+.toggle__button {
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+}
+.toggle__button input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+.toggle__button .toggle__switch {
+  display:inline-block;
+  height:12px;
+  border-radius:6px;
+  width:40px;
+  background-color: var(--switch-bg-color);
+  position:relative;
+  margin-left: 10px;
+  transition: all .25s;
+}
+.toggle__button .toggle__switch::after, 
+.toggle__button .toggle__switch::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  left: 0;
+  top: -3px;
+  transform: translateX(0);
+  transition: all .25s cubic-bezier(.5, -.6, .5, 1.6);
+}
+.toggle__button .toggle__switch::after {
+  background-color: var(--switch-grip-color);
+  border: 1px solid var(--switch-grip-border-color);
+}
+.toggle__button .toggle__switch::before {
+  background-color: var(--switch-bg-color);
+  opacity:0;
+}
+.active .toggle__switch {
+  background-color: var(--switch-bg-color);
+}
+.active .toggle__switch::after,
+.active .toggle__switch::before{
+  transform:translateX(40px - 18px);
+}
+.active .toggle__switch::after {
+  background-color: var(--switch-grip-color);
+  border: 1px solid var(--switch-grip-border-color)
+}

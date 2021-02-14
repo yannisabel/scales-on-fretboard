@@ -1,63 +1,61 @@
 {
   "name": "scales-on-fretboard",
-  "version": "1.0.0",
-  "description": "display scales on fretboard",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yannisabel/scales-on-fretboard"
+  "version": "2.0.0",
+  "description": "Source code for scales on fretboard project. It displays scales on bass (4-5-6 strings), guitar (6-7 strings) and ukulele fretboard.",
+  "author": {
+    "name": "Yann Isabel"
   },
   "scripts": {
-    "build": "npm run clean && webpack -p --config config/webpack-prod-config.js",
-    "clean": "rm -rf build/*",
-    "start:dev": "webpack-dev-server --config config/webpack-dev-config.js --open",
-    "start:prod": "npm run build && serve build",
-    "lint:scripts": "esw -w ./src/index.js ./src/js/components/**/*.js",
-    "lint:styles": "stylelint ./src/**/*.scss"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "author": "Yann Isabel",
-  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "v-tooltip": "^2.1.2",
+    "vue": "^2.6.11",
+    "vue-github-corners": "^1.2.3"
+  },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.4.9",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.2",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.15.2",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-watch": "^5.0.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^2.0.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
-    "node-sass-glob-importer": "^5.3.0",
-    "path": "^0.12.7",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.6.0",
-    "postcss-scss": "^2.0.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
-    "react-hot-loader": "^4.3.6",
-    "react-router-dom": "^4.3.1",
-    "sass-loader": "^7.1.0",
-    "serve": "^10.0.0",
-    "style-loader": "^0.23.0",
-    "stylelint": "^9.10.1",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.17.2",
-    "webpack-bundle-analyzer": "^3.1.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-command": "^0.4.1",
-    "webpack-dev-server": "^3.1.8",
-    "webpack-fix-style-only-entries": "^0.2.1",
-    "webpack-jarvis": "^0.3.2",
-    "webpack-merge": "^4.1.4"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "vuex": "^3.5.1",
+    "vuex-pathify": "^1.4.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "scales-on-fretboard@1.0.0",
+  "bugs": {
+    "url": "https://github.com/yannisabel/scales-on-fretboard/issues"
+  },
+  "homepage": "https://github.com/yannisabel/scales-on-fretboard#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yannisabel/scales-on-fretboard.git"
   }
 }
