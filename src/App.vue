@@ -1,75 +1,104 @@
 <template>
   <div id="app">
-    <label for="toggle-switch'" :class="{'active': darkMode}" class="toggle__button">
-      <span v-if="darkMode" class="toggle__label">Dark</span>
-      <span v-if="!darkMode" class="toggle__label">Light</span>
+    <GithubCorner
+      url="https://github.com/yannisabel/scales-on-fretboard"
+      cornerColor="#264B68"
+      gitColor="#ffffff"
+    />
+    <header class="header">
+      <h1>Scales on Fretboard</h1>
+      <label for="toggle-switch'" :class="{'active': darkTheme}" class="toggle__button">
+        <span v-if="darkTheme" class="toggle__label">Dark</span>
+        <span v-if="!darkTheme" class="toggle__label">Light</span>
 
-      <input type="checkbox" id="toggle-switch'" v-model="darkMode">
-      <span class="toggle__switch"></span>
-    </label>
-    <div>
-      <label for="instrument-choice">Instrument:</label>
-      <select
-        id="instrument-choice"
-        v-model="selectedInstrument"
-        @change="changeInstrument()"
-      >
-        <option
-          v-for="instrument in getAllInstruments"
-          :key="instrument.name"
-          :value="instrument.label"
-        >
-          {{ instrument.name }}
-        </option>
-      </select>
-      <template v-if="tuningSelect.length > 1">
-        <label for="tuning-choice">Tuning:</label>
-        <select
-          id="tuning-choice"
-          v-model="selectedTuning"
-          @change="changeTuning()"
-        >
-          <option
-            v-for="tuning in tuningSelect"
-            :key="tuning"
-            :value="tuning"
-          >
-            {{ tuning }}
-          </option>
-        </select>
-      </template>
-      <template v-else>
-        <span>Tuning:</span>
-        <span>{{ tuningSelect[0] }}</span>
-      </template>
-      <label for="scale-choice">Scale:</label>
-      <select
-        id="scale-choice"
-        v-model="selectedScale"
-        @change="changeScale()"
-      >
-        <option
-          v-for="scale in scaleSelect"
-          :key="scale.name"
-          :value="scale.name"
-        >
-          {{ scale.name }}
-        </option>
-      </select>
-      <label for="rootnote-choice">Root Note:</label>
-      <select
-        id="rootnote-choice"
-        v-model="selectedRootNote"
-        @change="changeRootNote()"
-      >
-        <option
-          v-for="note in getNotesNames"
-          :key="note"
-          :value="note"
-        >
-          {{ note }}
-        </option>
-      </select>
+        <input type="checkbox" id="toggle-switch'" v-model="darkTheme">
+        <span class="toggle__switch"></span>
+      </label>
+    </header>
+    <div class="infos-wrapper">
+      <div class="freatboard-options">
+        <div class="select-wrapper">
+          <label for="instrument-choice">Instrument:</label>
+          <div class="select">
+            <select
+              id="instrument-choice"
+              v-model="selectedInstrument"
+              @change="changeInstrument()"
+            >
+              <option
+                v-for="instrument in getAllInstruments"
+                :key="instrument.name"
+                :value="instrument.label"
+              >
+                {{ instrument.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="select-wrapper">
+          <template v-if="tuningSelect.length > 1">
+            <label for="tuning-choice">Tuning:</label>
+            <div class="select">
+              <select
+                id="tuning-choice"
+                v-model="selectedTuning"
+                @change="changeTuning()"
+              >
+                <option
+                  v-for="tuning in tuningSelect"
+                  :key="tuning"
+                  :value="tuning"
+                >
+                  {{ tuning }}
+                </option>
+              </select>
+            </div>
+          </template>
+          <template v-else>
+            <span>Tuning:</span>
+            <span>{{ tuningSelect[0] }}</span>
+          </template>
+        </div>
+        <div class="select-wrapper">
+          <label for="scale-choice">Scale:</label>
+          <div class="select">
+            <select
+              id="scale-choice"
+              v-model="selectedScale"
+              @change="changeScale()"
+            >
+              <option
+                v-for="scale in scaleSelect"
+                :key="scale.name"
+                :value="scale.name"
+              >
+                {{ scale.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="select-wrapper">
+          <label for="rootnote-choice">Root Note:</label>
+          <div class="select">
+            <select
+              id="rootnote-choice"
+              v-model="selectedRootNote"
+              @change="changeRootNote()"
+            >
+              <option
+                v-for="note in getNotesNames"
+                :key="note"
+                :value="note"
+              >
+                {{ note }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="current-infos">
+        <p><b>Steps:</b> {{ scaleSteps }}</p>
+      </div>
     </div>
     <Fretboard />
   </div>
@@ -77,20 +106,23 @@
 
 <script>
 import Fretboard from './components/Fretboard'
+import GithubCorner from 'vue-github-corners'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     Fretboard,
+    GithubCorner,
   },
   data() {
     return {
+      darkTheme: true,
       selectedInstrument: this.$store.state.instrument,
       selectedTuning: this.$store.state.tuning,
       selectedScale: this.$store.state.scale,
       selectedRootNote: this.$store.state.rootNote,
-      darkMode: true,
+      currentSteps: null,
     }
   },
   mounted() {
@@ -100,17 +132,17 @@ export default {
 
     if (theme === 'light') {
         htmlElement.setAttribute('theme', 'light')
-        this.darkMode = false
+        this.darkTheme = false
     } else {
         htmlElement.setAttribute('theme', 'dark');
-        this.darkMode = true
+        this.darkTheme = true
     }
   },
   watch: {
-    darkMode: function () {
+    darkTheme: function () {
         let htmlElement = document.documentElement;
 
-        if (this.darkMode) {
+        if (this.darkTheme) {
             localStorage.setItem("theme", 'dark');
             htmlElement.setAttribute('theme', 'dark');
         } else {
@@ -134,6 +166,9 @@ export default {
     },
     scaleSelect() {
       return this.getAllScales
+    },
+    scaleSteps() {
+      return this.getAllScales[this.selectedScale].steps.join(', ')
     },
   },
   methods: {
@@ -160,5 +195,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './main.scss';
+  @import './main.scss';
 </style>

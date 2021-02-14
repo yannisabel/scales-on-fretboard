@@ -70,6 +70,8 @@ export default {
   .fretboard {
     display: grid;
     grid-auto-flow: row;
+    overflow-x: auto;
+    padding-bottom: 20px;
   }
 
   .string--is-first {

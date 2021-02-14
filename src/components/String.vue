@@ -81,7 +81,7 @@ export default {
     height: 40px;
     &::before {
       position: absolute;
-      height: 4px;
+      height: 2px;
       width: 100%;
       top: 50%;
       transform: translateY(-50%);
@@ -92,6 +92,6 @@ export default {
   }
   .fret--is-open-string {
     width: 50px;
-    border-right: 6px solid var(--fret-color);
+    border-right: 8px solid var(--fret-color);
   }
 </style>

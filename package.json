@@ -1,7 +1,7 @@
 {
   "name": "scales-on-fretboard",
-  "version": "1.0.0",
-  "description": "Source code for scales on fretboard project. It displays scales on bass (4-5-6 strings) and guitar fretboard.\r This is inspired by [kodemonki react-fretboard](https://github.com/kodemonki/react-fretboard/)",
+  "version": "2.0.0",
+  "description": "Source code for scales on fretboard project. It displays scales on bass (4-5-6 strings), guitar (6-7 strings) and ukulele fretboard.",
   "author": {
     "name": "Yann Isabel"
   },
@@ -14,7 +14,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "v-tooltip": "^2.1.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-github-corners": "^1.2.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

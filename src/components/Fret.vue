@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.fret">
     <div
-      :class="[$style.fret__note]"
+      :class="[$style.fret__note, $style[intervalClass]]"
       role="tooltip"
       v-tooltip="{
         content: interval,
@@ -38,9 +38,22 @@ export default {
     highlighted: Boolean,
     interval: String,
   },
+  data() {
+    return {
+      intervalClass: null,
+    }
+  },
+  mounted() {
+    this.transformedInterval();
+  },
+  watch: {
+    interval: function () {
+      this.transformedInterval();
+    },
+  },
   methods: {
-    displayTooltip() {
-      return this.interval ? true : false
+    transformedInterval() {
+      this.intervalClass = this.interval ? this.interval.replace(/\s+/g, '-').toLowerCase() : '';
     }
   },
 }
@@ -52,7 +65,7 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100px;
+    width: 90px;
     height: 100%;
     border-right: 4px solid var(--fret-color);
 
@@ -80,6 +93,12 @@ export default {
       text { 
         fill: var(--note-text-color);
         font-size: 4em;
+      }
+
+      &.root {
+        circle {
+          fill: var(--root-note-bg-color);
+        }
       }
     }
   }

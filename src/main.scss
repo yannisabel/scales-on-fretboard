@@ -1,8 +1,11 @@
 @import './styles/colors';
 @import './styles/tooltip';
 @import './styles/switch';
+@import './styles/select';
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--app-background-color);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11,6 +14,36 @@ body {
 }
 
 #app {
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  margin-top: 60px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infos-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.freatboard-options {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 20px;
+  justify-content: left;
+  padding: 20px 0;
+}
+
+.current-infos {
+  display: flex;
+  align-items: center;
+  text-align: left;
+
+  h2 {
+    padding-top: 0;
+  }
 }

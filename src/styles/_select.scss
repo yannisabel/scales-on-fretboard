@@ -1,0 +1,50 @@
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+
+  label {
+    margin-bottom: 8px;
+  }
+}
+
+select {
+  appearance: none;
+  width: 100%;
+  height: auto;
+  border: 0; 
+  margin: 0;
+  padding: .75em;
+  overflow: hidden;
+  background-color: transparent;
+  text-overflow: ellipsis;
+  color: var(--text-color);
+
+  option {
+    color: var(--select-options-text-color);
+  }
+}
+
+.select {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  border-radius: 6px;
+  margin: 0 0 1.5em 0;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    display: block;
+    margin-top: -3px;
+    right: .75em;
+    width: 0; height: 0;
+    border-color: transparent;
+    border-top-color: var(--text-color);
+    border-width: 6px;
+    border-style: solid;
+    pointer-events: none;
+  }
+}

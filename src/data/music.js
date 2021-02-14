@@ -15,20 +15,6 @@ export const notesNames = [
   'G',
   'G#'
 ]
-// export const notesNames = {
-// 'A':  'A',
-// 'A#': 'A#',
-// 'B':  'B',
-// 'C':  'C',
-// 'C#': 'C#',
-// 'D':  'D',
-// 'D#': 'D#',
-// 'E':  'E',
-// 'F':  'F',
-// 'F#': 'F#',
-// 'G':  'G',
-// 'G#': 'G#',
-// };
 
 /**
  * Intervals
@@ -69,22 +55,22 @@ export const intervalsShorthands = [
 export const scales = {
 
 // SCALES
-'major': {positions: [0, 2, 4, 5, 7, 9, 11], name: 'major'},
-'Harmonic minor': {positions: [0, 2, 3, 5, 7, 8, 11], name: 'Harmonic minor'},
-'Melodic minor': {positions: [0, 2, 3, 5, 7, 9, 11], name: 'Melodic minor'},
-'Natural minor': {positions: [0, 2, 3, 5, 7, 8, 10], name: 'Natural minor'},
-'Pentatonic Major': {positions: [0, 2, 4, 7, 9], name: 'Pentatonic Major'},
-'Pentatonic Minor': {positions: [0, 3, 5, 7, 10], name: 'Pentatonic Minor'},
-'Pentatonic Blues': {positions: [0, 3, 5, 6, 7, 10], name: 'Pentatonic Blues'},
-'Pentatonic Neutral': {positions: [0, 2, 5, 7, 10], name: 'Pentatonic Neutral'},
+'major': {positions: [0, 2, 4, 5, 7, 9, 11], steps: ['whole', 'whole', 'half', 'whole', 'whole', 'whole'], name: 'major'},
+'Harmonic minor': {positions: [0, 2, 3, 5, 7, 8, 11], steps: ['whole', 'half', 'whole', 'whole', 'half', 'whole'], name: 'Harmonic minor'},
+'Melodic minor': {positions: [0, 2, 3, 5, 7, 9, 11], steps: ['whole', 'half', 'whole', 'whole', 'whole', 'whole'], name: 'Melodic minor'},
+'Natural minor': {positions: [0, 2, 3, 5, 7, 8, 10], steps: ['whole', 'half', 'whole', 'whole', 'half', 'whole'],  name: 'Natural minor'},
+'Pentatonic Major': {positions: [0, 2, 4, 7, 9], steps: ['whole', 'whole', 'whole and a half', 'whole'],  name: 'Pentatonic Major'},
+'Pentatonic Minor': {positions: [0, 3, 5, 7, 10], steps: ['whole and a half', 'whole', 'whole', 'whole and a half'],  name: 'Pentatonic Minor'},
+'Pentatonic Blues': {positions: [0, 3, 5, 6, 7, 10], steps: ['whole and a half', 'whole', 'half', 'half', 'whole and a half'], name: 'Pentatonic Blues'},
+'Pentatonic Neutral': {positions: [0, 2, 5, 7, 10], steps: ['whole', 'whole and a half', 'whole', 'whole and a half'], name: 'Pentatonic Neutral'},
 // MODES
-'Ionian': {positions: [0, 2, 4, 5, 7, 9, 11], name: 'Ionian'},
-'Dorian': {positions: [0, 2, 3, 5, 7, 9, 10], name: 'Dorian'},
-'Phrygian': {positions: [0, 1, 3, 5, 7, 8, 10], name: 'Phrygian'},
-'Lydian': {positions: [0, 2, 4, 6, 7, 9, 11], name: 'Lydian'},
-'Mixolydian': {positions: [0, 2, 4, 5, 7, 9, 10], name: 'Mixolydian'},
-'Aeolian': {positions: [0, 2, 3, 5, 7, 8, 10], name: 'Aeolian'},
-'Locrian': {positions: [0, 1, 3, 5, 6, 8, 10], name: 'Locrian'},
+'Ionian': {positions: [0, 2, 4, 5, 7, 9, 11], steps: ['whole', 'whole', 'half', 'whole', 'whole', 'whole'], name: 'Ionian'},
+'Dorian': {positions: [0, 2, 3, 5, 7, 9, 10], steps: ['whole', 'half', 'whole', 'whole', 'whole', 'half'], name: 'Dorian'},
+'Phrygian': {positions: [0, 1, 3, 5, 7, 8, 10], steps: ['half', 'whole', 'whole', 'whole', 'half', 'whole'], name: 'Phrygian'},
+'Lydian': {positions: [0, 2, 4, 6, 7, 9, 11], steps: ['whole', 'whole', 'whole', 'half', 'whole', 'whole'], name: 'Lydian'},
+'Mixolydian': {positions: [0, 2, 4, 5, 7, 9, 10], steps: ['whole', 'whole', 'half', 'whole', 'whole', 'half'], name: 'Mixolydian'},
+'Aeolian': {positions: [0, 2, 3, 5, 7, 8, 10], steps: ['whole', 'half', 'whole', 'whole', 'half', 'whole'], name: 'Aeolian'},
+'Locrian': {positions: [0, 1, 3, 5, 6, 8, 10], steps: ['half', 'whole', 'whole', 'half', 'whole', 'whole'], name: 'Locrian'},
 };
 
 /**
